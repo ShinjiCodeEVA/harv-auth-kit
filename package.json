@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "tsc --noEmit && tsx src/main.ts",
+    "dev": "tsc --noEmit && tsx src/main.tsx",
     "prepare": "husky",
     "lint": "eslint"
   },
