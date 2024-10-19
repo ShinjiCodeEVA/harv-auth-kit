@@ -4,7 +4,7 @@ import {
   UseMutationOptions,
   useQueryClient,
 } from "@tanstack/react-query";
-import { ReactQueryAuthConfig } from "./main";
+import { ReactQueryAuthConfig } from "./";
 
 /**
  * Creates a custom hook for registering a user with React Query.
@@ -27,7 +27,7 @@ export function queryRegister<
    * @returns The mutation result, which includes the registration mutation's state and methods.
    */
   const useRegister = (
-    options: Omit<
+    options?: Omit<
       UseMutationOptions<User, Error, RegisterCredentials>,
       "mutationFn"
     >,

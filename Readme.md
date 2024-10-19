@@ -1,19 +1,22 @@
-## harv-auth-kit 
+## harv-auth-kit
 
 [![npm version](https://img.shields.io/npm/v/harv-auth-kit.svg)](https://www.npmjs.com/package/harv-auth-kit)
 
 <p>Authenticate your application easily</p>
 
 ## Introduction
+
 <p>Using React Query has significantly reduced our codebase size by caching server state. However, we still need to determine how to store user data, which is a global application state accessed from multiple parts of the app and is also server state retrieved from a server. This library simplifies user authentication management by providing predefined hooks that can retrieve and cache server state.</p>
 
 ## Installation
+
 ```
 $ npm install @tanstack/react-query harv-auth-kit
 ```
 
 ## Usage
-<p>To use this library, you will need to provide it with functions for fetching the current user, logging in, registering, and logging out. You can do this using the configureAuth function:</p>
+
+To use this library, you will need to provide it with functions for fetching the current user, logging in, registering, and logging out. You can do this using the `configureAuth` function:
 
 ```
 const { useUser, useLogin, useRegister, useLogout } = configureAuth({
@@ -24,16 +27,16 @@ const { useUser, useLogin, useRegister, useLogout } = configureAuth({
 });
 ```
 
-**NOTE: All hooks and components must be used within** ```QueryClientProvider```
+**NOTE: All hooks and components must be used within** `QueryClientProvider`
 
 With these hooks you can then add authentication functionality in your app
 <br />
 
 Example:
-    <ul>
-        <li> You can use the ```useUser``` to get the user details </li>
-        <li> You can use the ```useLogout``` to logout the user</li>
-    </ul>
+<ul>
+<li> You can use the `useUser` to get the user details </li>
+<li> You can use the `useLogout` to logout the user</li>
+</ul>
 
 ```
 function UserInfo() {
@@ -60,14 +63,14 @@ function UserInfo() {
       </button>
     </div>
   );
-}    
+}
 ```
 
-In this way no need for storing and managing auth data and actions in a ```complex``` global state management 
-
+In this way no need for storing and managing auth data and actions in a `complex` global state management
 
 ## API Reference:
-```configureAuth```
+
+`configureAuth`
 
 The configureAuth function takes a configuration object and returns a set of custom hooks for managing authentication.
 

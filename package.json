@@ -1,12 +1,22 @@
 {
-  "name": "harv-auth",
+  "name": "harv-auth-kit",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "exports": {
+    "import": "./dist/index.js",
+    "types": "./dist/index.d.ts"
+  },
   "scripts": {
     "dev": "tsc --noEmit && tsx src/main.tsx",
     "prepare": "husky",
-    "lint": "eslint"
+    "lint": "eslint",
+    "build": "tsc"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^19.5.0",

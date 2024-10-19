@@ -4,7 +4,7 @@ import {
   UseMutationOptions,
   useQueryClient,
 } from "@tanstack/react-query";
-import { ReactQueryAuthConfig } from "./main";
+import { ReactQueryAuthConfig } from "./";
 
 /**
  * Creates a custom hook for logging in a user with React Query.
@@ -24,7 +24,7 @@ export function queryLogin<User, Error, LoginCredentials, RegisterCredentials>(
    * @returns The mutation result, which includes the login mutation's state and methods.
    */
   const useLogin = (
-    options: Omit<
+    options?: Omit<
       UseMutationOptions<User, Error, LoginCredentials>,
       "mutationFn"
     >,

@@ -4,7 +4,7 @@ import {
   UseMutationOptions,
   useQueryClient,
 } from "@tanstack/react-query";
-import { ReactQueryAuthConfig } from "./main";
+import { ReactQueryAuthConfig } from "./";
 
 /**
  * Creates a custom hook for logging out a user with React Query.
@@ -24,7 +24,7 @@ export function queryLogout<User, Error, LoginCredentials, RegisterCredentials>(
    * @returns The mutation result, which includes the logout mutation's state and methods.
    */
   const useLogout = (
-    options: Omit<UseMutationOptions<unknown, Error, unknown>, "mutationFn">,
+    options?: Omit<UseMutationOptions<unknown, Error, unknown>, "mutationFn">,
   ) => {
     const queryClient = useQueryClient();
 

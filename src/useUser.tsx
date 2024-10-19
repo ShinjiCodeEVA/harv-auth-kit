@@ -1,5 +1,5 @@
 import { QueryKey, useQuery, UseQueryOptions } from "@tanstack/react-query";
-import { ReactQueryAuthConfig } from "./main";
+import { ReactQueryAuthConfig } from ".";
 
 /**
  * Creates a custom hook for retrieving user data with React Query.
@@ -19,7 +19,7 @@ export function queryUser<User, Error, LoginCredentials, RegisterCredentials>(
    * @returns The query result, which includes the user data and query state.
    */
   const useUser = (
-    options: Omit<
+    options?: Omit<
       UseQueryOptions<User, Error, User, QueryKey>,
       "queryKey" | "queryFn"
     >,
