@@ -12,6 +12,7 @@ export interface User {
 
 export async function handleApiResponse(response: Response) {
   const data = await response.json();
+  console.log(data)
 
   if (response.ok) {
     return data;
@@ -35,5 +36,15 @@ export function loginWithEmailAndPassword(
   return fetch("/auth/login", {
     method: "POST",
     body: JSON.stringify(data),
+  }).then(handleApiResponse);
+}
+
+export function logoutUser(
+): Promise<unknown> {
+  return fetch("/auth/logout", {
+    method: "POST",
+    headers: {
+      Authorization: storage.getToken(),
+    },
   }).then(handleApiResponse);
 }

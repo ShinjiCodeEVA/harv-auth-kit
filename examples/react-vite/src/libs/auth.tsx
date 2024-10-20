@@ -1,6 +1,6 @@
 import { AuthResponse, User } from "./api";
 import { storage } from "./utils";
-import { loginWithEmailAndPassword, getUser } from "./api";
+import { loginWithEmailAndPassword, getUser, logoutUser } from "./api";
 import { configureAuth } from "harv-auth-kit"
 
 export type LoginSchema = Omit<User, "id"> & { password: string };
@@ -22,18 +22,23 @@ const getUserProfile = async (): Promise<AuthResponse> => {
     return res;
 }
 
-const { useUser, useLogin } = configureAuth({
+const logout = async (): Promise<unknown> => {
+    const response = await logoutUser();
+    storage.clearToken();
+    return response;
+}
+
+const { useUser, useLogin, useLogout } = configureAuth({
     loginFn: login,
     userFn: getUserProfile,
     registerFn: function (_variables: unknown): Promise<AuthResponse> {
         throw new Error("Function not implemented.");
     },
-    logoutFn: function (_variables: unknown): Promise<unknown> {
-        throw new Error("Function not implemented.");
-    }
+    logoutFn: logout
 })
 
 export {
     useUser,
-    useLogin
+    useLogin,
+    useLogout
 }

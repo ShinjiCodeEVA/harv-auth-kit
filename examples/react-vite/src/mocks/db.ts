@@ -27,11 +27,17 @@ export const users: AuthUser[] = [
   },
 ];
 
-localStorage.setItem("db_users", JSON.stringify(users))
+const dbStorage = {
+  setUsers: (users: AuthUser[]) => localStorage.setItem("db_users", JSON.stringify(users)),
+  getUsers: () => JSON.parse(localStorage.getItem("db_users")!)
+}
+
+if (!dbStorage.getUsers()) {
+  dbStorage.setUsers(users);
+}
 
 export const loginUser = (userData: DBUser): AuthUser | undefined => {
-  const usersStored = localStorage.getItem("db_users")
-  const parsedUsers: AuthUser[] = usersStored ? JSON.parse(usersStored) : [];
+  const parsedUsers: AuthUser[] = dbStorage.getUsers();
 
   return parsedUsers.find((storedUser) => {
     return (
@@ -42,10 +48,20 @@ export const loginUser = (userData: DBUser): AuthUser | undefined => {
 };
 
 export const getUser = (jwt: string) => {
-  const usersStored = localStorage.getItem("db_users")
-  const parsedUsers: AuthUser[] = usersStored ? JSON.parse(usersStored) : [];
+  const parsedUsers: AuthUser[] = dbStorage.getUsers();
 
   return parsedUsers.find((storedUser) => {
     return storedUser.jwt === jwt;
   });
 };
+
+
+export const logoutUser = (jwt: string) => {
+  const parsedUsers: AuthUser[] = dbStorage.getUsers();
+
+  const newUsers = parsedUsers.filter((storedUser) => {
+    return storedUser.jwt !== jwt;
+  });
+
+  dbStorage.setUsers(newUsers);
+}
