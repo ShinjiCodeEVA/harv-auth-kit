@@ -33,10 +33,10 @@ With these hooks you can then add authentication functionality in your app
 <br />
 
 Example:
-<ul>
-<li> You can use the `useUser` to get the user details </li>
-<li> You can use the `useLogout` to logout the user</li>
-</ul>
+
+ - You can use the `useUser` to get the user details <br />
+ - You can use the `useLogout` to logout the user
+
 
 ```javascript
 function UserInfo() {
