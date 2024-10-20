@@ -1,13 +1,33 @@
 {
-  "name": "harv-auth",
+  "name": "harv-auth-kit",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": {
-    "dev": "tsc --noEmit && tsx src/main.ts",
-    "prepare": "husky",
-    "lint": "eslint"
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.js",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "exports": {
+    "import": "./dist/index.js",
+    "types": "./dist/index.d.ts"
   },
+  "scripts": {
+    "dev": "tsc --noEmit && tsx src/main.tsx",
+    "prepare": "husky",
+    "lint": "eslint",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ShinjiCodeEVA/harv-auth.git"
+  },
+  "keywords": [
+    "react",
+    "auth"
+  ],
+  "author": "ShiniCodeEVA",
   "devDependencies": {
     "@commitlint/config-conventional": "^19.5.0",
     "@eslint/js": "^9.13.0",
